@@ -1,0 +1,56 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  transition: background-color 0.3s ease;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.color-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s;
+}
+
+.color-btn:hover {
+  transform: scale(1.1);
+}
+
+#red {
+  background-color: red;
+  color: white;
+}
+#yellow {
+  background-color: yellow;
+  color: black;
+}
+#black {
+  background-color: black;
+  color: white;
+}
+#purple {
+  background-color: purple;
+  color: white;
+}
+#green {
+  background-color: green;
+  color: white;
+}
+#blue {
+  background-color: blue;
+  color: white;
+}
+#default {
+  background-color: orange;
+  color: white;
+}
