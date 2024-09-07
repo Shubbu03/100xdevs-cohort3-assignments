@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Builder</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+      }
+      .form-builder,
+      .form-preview {
+        width: 45%;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+      }
+      select,
+      input {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .form-preview {
+        padding: 20px;
+        background-color: #e9ecef;
+      }
+      .form-field {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-builder">
+        <h2>Form Builder</h2>
+        <div>
+          <label for="fieldType">Select Field Type</label>
+          <select id="fieldType">
+            <option value="text">Text Input</option>
+            <option value="checkbox">Checkbox</option>
+            <option value="radio">Radio Button</option>
+          </select>
+        </div>
+        <div>
+          <label for="fieldLabel">Field Label</label>
+          <input type="text" id="fieldLabel" placeholder="Enter field label" />
+        </div>
+        <button id="addField">Add Field</button>
+      </div>
+
+      <div class="form-preview">
+        <h2>Form Preview</h2>
+        <div id="previewArea"></div>
+      </div>
+    </div>
+
+    <script>
+      const addFieldBtn = document.getElementById("addField");
+      const previewArea = document.getElementById("previewArea");
+
+      addFieldBtn.addEventListener("click", function () {
+        const fieldType = document.getElementById("fieldType").value;
+        const fieldLabel = document.getElementById("fieldLabel").value;
+
+        if (!fieldLabel) {
+          alert("Please enter a field label");
+          return;
+        }
+
+        const fieldWrapper = document.createElement("div");
+        fieldWrapper.classList.add("form-field");
+
+        const label = document.createElement("label");
+        label.textContent = fieldLabel;
+
+        let field;
+        switch (fieldType) {
+          case "text":
+            field = document.createElement("input");
+            field.type = "text";
+            field.placeholder = fieldLabel;
+            break;
+          case "checkbox":
+            field = document.createElement("input");
+            field.type = "checkbox";
+            break;
+          case "radio":
+            field = document.createElement("input");
+            field.type = "radio";
+            break;
+        }
+
+        fieldWrapper.appendChild(label);
+        fieldWrapper.appendChild(field);
+
+        previewArea.appendChild(fieldWrapper);
+      });
+    </script>
+  </body>
+</html>
