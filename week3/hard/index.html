@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Draggable Todo List</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+      }
+      .board {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+      }
+      .list {
+        background-color: #e0e0e0;
+        border-radius: 5px;
+        padding: 10px;
+        width: 250px;
+      }
+      .list-header {
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .card {
+        background-color: white;
+        border-radius: 3px;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+      }
+      .card-title {
+        font-weight: bold;
+      }
+      .card-desc {
+        font-size: 0.9em;
+        color: #666;
+      }
+      .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 3px;
+        font-size: 0.8em;
+        margin-right: 5px;
+      }
+      .tag.urgent {
+        background-color: #ff7f7f;
+      }
+      .tag.medium {
+        background-color: #ffd700;
+      }
+      .tag.low {
+        background-color: #90ee90;
+      }
+      .add-card {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 3px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="board">
+      <div class="list">
+        <div class="list-header">
+          <span>To Do</span>
+          <span class="options">⋮</span>
+        </div>
+        <div class="list-cards">
+          <div class="card">
+            <div class="card-title">TODO DO</div>
+            <div class="card-desc">TODO DO OD</div>
+            <span class="tag medium">Medium</span>
+            <span>July 31, 2024</span>
+          </div>
+          <div class="card">
+            <div class="card-title">Finished</div>
+            <div class="card-desc">Finished</div>
+            <span class="tag low">Low</span>
+            <span>July 31, 2024</span>
+          </div>
+        </div>
+        <button class="add-card">Add new +</button>
+      </div>
+      <div class="list">
+        <div class="list-header">
+          <span>In Progress</span>
+          <span class="options">⋮</span>
+        </div>
+        <div class="list-cards">
+          <div class="card">
+            <div class="card-title">todo2</div>
+            <div class="card-desc">todo2 description</div>
+            <span class="tag medium">Medium</span>
+            <span>July 31, 2024</span>
+          </div>
+        </div>
+        <button class="add-card">Add new +</button>
+      </div>
+      <div class="list">
+        <div class="list-header">
+          <span>Under Review</span>
+          <span class="options">⋮</span>
+        </div>
+        <div class="list-cards">
+          <div class="card">
+            <div class="card-title">todo3</div>
+            <div class="card-desc">ejsrfsdnjkfsdn</div>
+            <span class="tag urgent">Urgent</span>
+            <span>July 31, 2024</span>
+          </div>
+          <div class="card">
+            <div class="card-title">prod todo</div>
+            <div class="card-desc">this is prod todo</div>
+            <span class="tag medium">Medium</span>
+            <span>July 31, 2024</span>
+          </div>
+        </div>
+        <button class="add-card">Add new +</button>
+      </div>
+      <div class="list">
+        <div class="list-header">
+          <span>Finished</span>
+          <span class="options">⋮</span>
+        </div>
+        <div class="list-cards">
+          <div class="card">
+            <div class="card-title">todo4</div>
+            <div class="card-desc">waeedddesfsdaf</div>
+            <span class="tag medium">Medium</span>
+            <span>July 31, 2024</span>
+          </div>
+          <div class="card">
+            <div class="card-title">testing todo</div>
+            <div class="card-desc">final testing todo desc</div>
+            <span class="tag urgent">Urgent</span>
+            <span>July 31, 2024</span>
+          </div>
+        </div>
+        <button class="add-card">Add new +</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const lists = document.querySelectorAll(".list-cards");
+        lists.forEach((list) => {
+          new Sortable(list, {
+            group: "shared",
+            animation: 150,
+          });
+        });
+
+        const addButtons = document.querySelectorAll(".add-card");
+        addButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const newCard = document.createElement("div");
+            newCard.className = "card";
+            newCard.innerHTML = `
+                        <div class="card-title">New Task</div>
+                        <div class="card-desc">Task description</div>
+                        <span class="tag medium">Medium</span>
+                        <span>${new Date().toLocaleDateString()}</span>
+                    `;
+            button.parentNode.querySelector(".list-cards").appendChild(newCard);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
