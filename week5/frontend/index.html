@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Management App with Authentication</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="authSection" class="container">
+      <h1>Task Management App</h1>
+
+      <!-- Signup Form -->
+      <div id="signupForm" class="auth-form">
+        <h2>Sign Up</h2>
+        <input type="text" id="signupUsername" placeholder="Username" />
+        <input type="password" id="signupPassword" placeholder="Password" />
+        <button id="signupBtn">Sign Up</button>
+        <p>Already have an account? <a href="#" id="showSignin">Sign In</a></p>
+      </div>
+
+      <!-- Signin Form -->
+      <div id="signinForm" class="auth-form hidden">
+        <h2>Sign In</h2>
+        <input type="text" id="signinUsername" placeholder="Username" />
+        <input type="password" id="signinPassword" placeholder="Password" />
+        <button id="signinBtn">Sign In</button>
+        <p>Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+      </div>
+    </div>
+
+    <!-- Task Management Section -->
+    <div id="taskSection" class="container hidden">
+      <h1>Welcome <span id="usernameDisplay"></span></h1>
+      <button id="logoutBtn">Logout</button>
+
+      <div class="task-input">
+        <input type="text" id="task" placeholder="Enter your task" />
+        <button id="addTaskBtn">Add Task</button>
+      </div>
+
+      <ul id="taskList">
+        <!-- Tasks will be added here -->
+      </ul>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
