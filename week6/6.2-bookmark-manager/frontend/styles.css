@@ -1,0 +1,77 @@
+body {
+  /* Set font, background color, and overall styling for the app */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Container styling for the app */
+.container {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the main title */
+h1 {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Basic button styling */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for the list of bookmarks */
+#bookmark-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#bookmark-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#bookmark-list li:last-child {
+  border-bottom: none;
+}
+
+/* Favorite button styling */
+button.favorite-btn {
+  background-color: #28a745;
+}
+
+button.favorite-btn:hover {
+  background-color: #218838;
+}
+
+/* Delete button styling */
+button.delete-btn {
+  background-color: #dc3545;
+}
+
+button.delete-btn:hover {
+  background-color: #c82333;
+}
