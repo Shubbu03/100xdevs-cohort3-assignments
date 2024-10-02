@@ -41,6 +41,7 @@ adminRoutes.post("/signup", async (req, res) => {
     res.json({
       message: "New admin user signed up successfully!!",
       data: admin,
+      role: admin.role,
     });
   } catch (error) {
     res.status(401).json({
@@ -56,7 +57,6 @@ adminRoutes.post("/signin", async (req, res) => {
 
     const admin = await adminModel.findOne({ email });
 
-    console.log("admin", admin);
     if (!admin) {
       return res.status(403).json({
         message: "Incorrect credentials",
@@ -78,6 +78,7 @@ adminRoutes.post("/signin", async (req, res) => {
       res.status(201).json({
         message: "Admin User signed in successfully",
         token,
+        role: admin.role,
       });
     } else {
       res.status(403).json({
@@ -130,8 +131,6 @@ adminRoutes.put("/course", adminMiddleware, async (req, res) => {
   try {
     const adminId = req.adminId;
     const { title, description, price, imageUrl, courseId } = req.body;
-
-    console.log("data", req.body);
 
     if (!courseId) {
       return res.status(400).json({
@@ -188,8 +187,6 @@ adminRoutes.get("/course/bulk", adminMiddleware, async (req, res) => {
     const course = await courseModel.find({
       creatorId: adminId,
     });
-
-    console.log("courses", course);
 
     if (!course) {
       req.status(401).json({

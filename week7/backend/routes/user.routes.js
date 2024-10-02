@@ -15,7 +15,7 @@ userRoutes.post("/signup", async (req, res) => {
 
     if (!email || !password || !firstName || !lastName) {
       res.status(401).json({
-        message: "All fields are required!!",
+        message: "All fields are required !!",
       });
     }
 
@@ -28,21 +28,15 @@ userRoutes.post("/signup", async (req, res) => {
       lastName,
     });
 
-    if (!user) {
-      res.status(401).json({
-        message: "Error occured while signing up new user, please try again",
-        error,
-      });
-    }
 
     await user.save();
 
-    res.json({
+    return res.json({
       message: "New user signed up successfully!!",
       data: user,
     });
   } catch (error) {
-    res.status(401).json({
+    return res.status(401).json({
       message: "Error occured while signing up",
       error,
     });

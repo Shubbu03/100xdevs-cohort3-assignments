@@ -21,6 +21,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  role: {
+    type: String,
+    required: true,
+    default: "user",
+  },
 });
 
 const adminSchema = new mongoose.Schema({
@@ -39,6 +44,11 @@ const adminSchema = new mongoose.Schema({
   lastName: {
     type: String,
     required: true,
+  },
+  role: {
+    type: String,
+    required: true,
+    default: "admin",
   },
 });
 

@@ -8,13 +8,20 @@ coursesRoutes.post("/purchases", userMiddleware, async (req, res) => {
   const userId = req.userId;
   const courseId = req.body.courseId;
 
-  await purchaseModel.create({
+  const newCourse = await purchaseModel.create({
     userId,
     courseId,
   });
 
+  if (!newCourse) {
+    res.status(401).json({
+      message: "Error buying course",
+    });
+  }
+
   res.json({
     message: "Course purchased",
+    data: newCourse,
   });
 });
 
